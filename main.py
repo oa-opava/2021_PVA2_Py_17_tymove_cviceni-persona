@@ -1,5 +1,6 @@
 import datetime
 import math
+import re
 from tkinter import *
 
 # About the program
@@ -79,15 +80,18 @@ rodne_cislo_input = Entry(root, textvariable=rodne_cislo)
 rodne_cislo_input.pack()
 rodne_cislo_input.focus_set()
 
-
 # create button
 def process():
     udaje = Udaje(rodne_cislo.get())
     if udaje.jeSpravne():
-        print(f"Pohlaví je {udaje.pohlavi()} narozen {udaje.datumNarozeni()} a má {udaje.getVek()} let.")
+        text.config(text=f"Pohlaví je {udaje.pohlavi()} narozen {udaje.datumNarozeni()} a má {udaje.getVek()} let.")
 
 
 button = Button(root, text="Odeslat!", command=process)
 button.pack()
+
+# display text
+text = Label(root, text="")
+text.pack()
 
 root.mainloop()
